@@ -1,6 +1,6 @@
 import { Theme } from './Theme';
 import { Scroll } from './TimelineHorizontalModel';
-import { TimelineCardModel } from './TimelineItemModel';
+import { TimelineEntryModel } from './TimelineItemModel';
 import { Media } from './TimelineMediaModel';
 import { TimelineProps } from './TimelineModel';
 
@@ -84,6 +84,6 @@ export type TimelineVerticalModel = Pick<
   childrenNode?: React.ReactNode;
   contentDetailsChildren?: React.ReactNode;
   iconChildren?: React.ReactNode;
-  items: TimelineCardModel[];
+  items: TimelineEntryModel[];
   onOutlineSelection?: (index: number) => void;
 };

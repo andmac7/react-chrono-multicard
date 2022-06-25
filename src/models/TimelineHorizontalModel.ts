@@ -1,6 +1,6 @@
 import { ReactNode } from 'react';
 // import { Theme } from './Theme';
-import { TimelineCardModel } from './TimelineItemModel';
+import { TimelineEntryModel } from './TimelineItemModel';
 import { TimelineMode } from './TimelineModel';
 
 export interface TimelineHorizontalModel {
@@ -10,7 +10,7 @@ export interface TimelineHorizontalModel {
   hasFocus?: boolean;
   iconChildren?: ReactNode;
   itemWidth?: number;
-  items: TimelineCardModel[];
+  items: TimelineEntryModel[];
   mode?: TimelineMode;
   onElapsed?: (id?: string) => void;
   slideShowRunning?: boolean;

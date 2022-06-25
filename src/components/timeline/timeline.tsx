@@ -8,7 +8,7 @@ import React, {
   useState,
 } from 'react';
 import { Scroll } from '../../models/TimelineHorizontalModel';
-import { TimelineCardModel } from '../../models/TimelineItemModel';
+import { TimelineEntryModel } from '../../models/TimelineItemModel';
 import { TimelineModel } from '../../models/TimelineModel';
 import useNewScrollPosition from '../effects/useNewScrollPosition';
 import { GlobalContext } from '../GlobalContext';
@@ -293,7 +293,7 @@ const Timeline: React.FunctionComponent<TimelineModel> = (
             contentDetailsChildren={contentDetailsChildren}
             hasFocus={hasFocus}
             iconChildren={iconChildren}
-            items={items as TimelineCardModel[]}
+            items={items as TimelineEntryModel[]}
             mode={mode}
             onClick={handleTimelineItemClick}
             onElapsed={(id?: string) => handleTimelineItemClick(id, true)}
@@ -314,7 +314,7 @@ const Timeline: React.FunctionComponent<TimelineModel> = (
               handleItemClick={handleTimelineItemClick}
               hasFocus={hasFocus}
               iconChildren={iconChildren}
-              items={items as TimelineCardModel[]}
+              items={items as TimelineEntryModel[]}
               mode={mode}
               onElapsed={(id?: string) => handleTimelineItemClick(id, true)}
               slideShowRunning={slideShowRunning}
@@ -332,7 +332,7 @@ const Timeline: React.FunctionComponent<TimelineModel> = (
             contentDetailsChildren={contentDetailsChildren}
             hasFocus={hasFocus}
             iconChildren={iconChildren}
-            items={items as TimelineCardModel[]}
+            items={items as TimelineEntryModel[]}
             mode={mode}
             onClick={handleTimelineItemClick}
             onElapsed={(id?: string) => handleTimelineItemClick(id, true)}

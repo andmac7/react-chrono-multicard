@@ -1,7 +1,7 @@
 import { fireEvent, render, screen } from '@testing-library/react';
 import React from 'react';
 import {
-    TimelineCardModel, TimelineItemModel
+    TimelineEntryModel, TimelineItemModel
 } from '../../../models/TimelineItemModel';
 import Tree from '../timeline-vertical';
 
@@ -40,7 +40,7 @@ const View = (
   <Tree
     onClick={onClick}
     autoScroll={autoScroll}
-    items={items as TimelineCardModel[]}
+    items={items as TimelineEntryModel[]}
     activeTimelineItem={2}
   />
 );

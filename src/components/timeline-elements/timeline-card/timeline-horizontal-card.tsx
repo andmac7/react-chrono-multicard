@@ -19,15 +19,10 @@ import {
   Wrapper,
 } from './timeline-horizontal-card.styles';
 
-const TimelineCard: React.FunctionComponent<TimelineCardModel> = ({
+const TimelineWithCards: React.FunctionComponent<TimelineCardModel> = ({
   active,
   autoScroll,
-  cardDetailedText,
-  cardSubtitle,
-  cardTitle,
-  url,
   id,
-  media,
   onClick,
   onElapsed,
   slideShowRunning,
@@ -37,11 +32,12 @@ const TimelineCard: React.FunctionComponent<TimelineCardModel> = ({
   customContent,
   hasFocus,
   iconChild,
+  cards
 }: TimelineCardModel) => {
   const circleRef = useRef<HTMLDivElement>(null);
   const wrapperRef = useRef<HTMLDivElement>(null);
   const contentRef = useRef<HTMLDivElement>(null);
-
+  
   const {
     mode,
     cardPositionHorizontal: position,
@@ -104,32 +100,35 @@ const TimelineCard: React.FunctionComponent<TimelineCardModel> = ({
 
   const timelineContent = useMemo(() => {
     return (
-      <TimelineContentContainer
-        className={containerClass}
-        ref={contentRef}
-        id={`timeline-card-${id}`}
-        theme={theme}
-        active={active}
-        highlight={showAllCardsHorizontal}
-        tabIndex={0}
-      >
+    <TimelineContentContainer
+      className={containerClass}
+      ref={contentRef}
+      id={`timeline-card-${id}`}
+      theme={theme}
+      active={active}
+      highlight={showAllCardsHorizontal}
+      tabIndex={0}
+    >
+      {cards?.map((card, index) => 
         <TimelineCardContent
-          content={cardSubtitle}
+          content={card.subtitle}
           active={active}
-          title={cardTitle}
-          url={url}
-          detailedText={cardDetailedText}
+          title={card.title}
+          url={card.url}
+          detailedText={card.detailedText}
           onShowMore={handleOnShowMore}
           theme={theme}
           slideShowActive={slideShowRunning}
-          media={media}
+          media={card.media}
           onElapsed={onElapsed}
-          id={id}
+          key={index}
           customContent={customContent}
           hasFocus={hasFocus}
           onClick={onClick}
         />
-      </TimelineContentContainer>
+      )}
+
+    </TimelineContentContainer>
     );
   }, [active, slideShowRunning]);
 
@@ -174,4 +173,4 @@ const TimelineCard: React.FunctionComponent<TimelineCardModel> = ({
   );
 };
 
-export default TimelineCard;
+export default TimelineWithCards;

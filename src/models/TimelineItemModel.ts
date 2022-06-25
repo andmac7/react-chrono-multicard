@@ -1,7 +1,17 @@
+import { To } from 'history';
 import { Theme } from './Theme';
 import { Scroll } from './TimelineHorizontalModel';
 import { Media } from './TimelineMediaModel';
 import { TimelineMode } from './TimelineModel';
+
+export interface ICardModel {
+  detailedText?: string | string[];
+  media?: Media;
+  subtitle?: string;
+  title?: string;
+  url?: string;
+}
+
 /**
  *
  *
@@ -13,6 +23,7 @@ export interface TimelineItemModel {
   cardDetailedText?: string | string[];
   cardSubtitle?: string;
   cardTitle?: string;
+  cards: ICardModel[] | undefined;
   id?: string;
   media?: Media;
   position?: string;
@@ -21,16 +32,47 @@ export interface TimelineItemModel {
   visible?: boolean;
 }
 
-export type TimelineCardModel = Pick<
+export type TimelineEntryModel = Pick<
   TimelineItemModel,
   | 'id'
   | 'visible'
   | 'title'
   | 'active'
-  | 'cardDetailedText'
-  | 'cardSubtitle'
-  | 'cardTitle'
+  | 'cards'
   | 'media'
+  | 'url'
+> & {
+  autoScroll: ({
+    pointOffset,
+    pointWidth,
+    timelinePointHeight,
+    contentHeight,
+  }: Partial<Scroll>) => void;
+  cardHeight?: number;
+  customContent?: React.ReactNode | React.ReactNode[];
+  hasFocus?: boolean;
+  iconChild?: React.ReactNode;
+  mode: TimelineMode;
+  onClick: (id?: string) => void;
+  onElapsed?: (id?: string) => void;
+  slideItemDuration?: number;
+  slideShowRunning?: boolean;
+  theme?: Theme;
+  wrapperId: string;
+};
+
+export type TimelineCardModel = Pick<
+  TimelineItemModel,
+  | 'id'
+  | 'visible'
+  | 'active'
+  | 'cards'
+> & Pick<
+  ICardModel,
+  | 'detailedText'
+  | 'media'
+  | 'subtitle'
+  | 'title'
   | 'url'
 > & {
   autoScroll: ({

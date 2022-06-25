@@ -1,7 +1,7 @@
 import { render, screen } from '@testing-library/react';
 import React from 'react';
 import {
-    TimelineCardModel, TimelineItemModel
+    TimelineEntryModel, TimelineItemModel
 } from '../../../models/TimelineItemModel';
 import Collection from '../timeline-horizontal';
 
@@ -39,7 +39,7 @@ const items: TimelineItemModel[] = [
 
 const Horizontal = (
   <Collection
-    items={items as TimelineCardModel[]}
+    items={items as TimelineEntryModel[]}
     itemWidth={250}
     mode="HORIZONTAL"
     handleItemClick={onClick}
@@ -50,7 +50,7 @@ const Horizontal = (
 
 const Vertical = (
   <Collection
-    items={items as TimelineCardModel[]}
+    items={items as TimelineEntryModel[]}
     itemWidth={250}
     mode="VERTICAL"
     handleItemClick={onClick}
@@ -61,7 +61,7 @@ const Vertical = (
 
 const Tree = (
   <Collection
-    items={items as TimelineCardModel[]}
+    items={items as TimelineEntryModel[]}
     itemWidth={250}
     mode="VERTICAL_ALTERNATING"
     handleItemClick={onClick}

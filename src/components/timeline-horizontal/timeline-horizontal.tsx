@@ -1,8 +1,8 @@
 import cls from 'classnames';
-import React, { ReactNode, useContext, useMemo } from 'react';
+import React, { ReactNode, useContext, useMemo, useRef, useEffect } from 'react';
 import { TimelineHorizontalModel } from '../../models/TimelineHorizontalModel';
 import { GlobalContext } from '../GlobalContext';
-import TimelineCard from '../timeline-elements/timeline-card/timeline-horizontal-card';
+import TimelineWithCards from '../timeline-elements/timeline-card/timeline-horizontal-card';
 import {
   TimelineHorizontalWrapper,
   TimelineItemWrapper,
@@ -17,7 +17,7 @@ const TimelineHorizontal: React.FunctionComponent<TimelineHorizontalModel> = ({
   onElapsed,
   contentDetailsChildren: children,
   hasFocus,
-  iconChildren,
+  iconChildren
 }: TimelineHorizontalModel) => {
   const {
     mode = 'HORIZONTAL',
@@ -25,7 +25,7 @@ const TimelineHorizontal: React.FunctionComponent<TimelineHorizontalModel> = ({
     cardHeight,
     flipLayout,
     showAllCardsHorizontal,
-    theme,
+    theme
   } = useContext(GlobalContext);
 
   const wrapperClass = useMemo(
@@ -55,7 +55,26 @@ const TimelineHorizontal: React.FunctionComponent<TimelineHorizontalModel> = ({
             'timeline-horz-item-container',
           )}
         >
-          <TimelineCard
+        {/* {item?.cards && item.cards.map((card: any, cardIndex: any) => ( */}
+          <TimelineWithCards
+            cards={item.cards}
+            key={index}
+            onClick={handleItemClick}
+            autoScroll={autoScroll}
+            mode={mode}
+            wrapperId={wrapperId}
+            theme={theme}
+            slideShowRunning={slideShowRunning}
+            cardHeight={cardHeight}
+            onElapsed={onElapsed}
+            customContent={children ? (children as ReactNode[])[index] : null}
+            hasFocus={hasFocus}
+            iconChild={iconChildColln[index]}
+            active={item.active}
+            title={item.title}
+          />
+        {/* ))} */}
+          {/* <TimelineCard
             {...item}
             onClick={handleItemClick}
             autoScroll={autoScroll}
@@ -69,7 +88,7 @@ const TimelineHorizontal: React.FunctionComponent<TimelineHorizontalModel> = ({
             hasFocus={hasFocus}
             iconChild={iconChildColln[index]}
             active={item.active}
-          />
+          /> */}
         </TimelineItemWrapper>
       ))}
     </TimelineHorizontalWrapper>
