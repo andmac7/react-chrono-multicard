@@ -24,9 +24,9 @@ const Chrono: React.FunctionComponent<Partial<TimelineProps>> = (
   const [slideShowActive, setSlideshowActive] = useState(false);
   const [activeTimelineItem, setActiveTimelineItem] = useState(activeItemIndex);
 
-  const initItems = (items?: TimelineItemModel[]) => {
+  const initItems = (items?: any) => {
     return items && items.length
-      ? items.map((item, index) => {
+      ? items.map((item: any, index: number) => {
           return Object.assign({}, item, {
             active: index === activeItemIndex,
             id: Math.random().toString(16).slice(2),
@@ -40,7 +40,7 @@ const Chrono: React.FunctionComponent<Partial<TimelineProps>> = (
         }).map<Partial<TimelineItemModel>>((item, index) => ({
           active: index === activeItemIndex,
           id: Math.random().toString(16).slice(2),
-          visible: true,
+          visible: true
         }));
   };
 

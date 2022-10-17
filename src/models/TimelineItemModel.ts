@@ -6,6 +6,7 @@ import { TimelineMode } from './TimelineModel';
 
 export interface ICardModel {
   detailedText?: string | string[];
+  footer?: JSX.Element;
   media?: Media;
   subtitle?: string;
   title?: string;

@@ -9,15 +9,16 @@ import React, {
 import ReactDOM from 'react-dom';
 import { TimelineCardModel } from '../../../models/TimelineItemModel';
 import { GlobalContext } from '../../GlobalContext';
-import TimelineCardContent from '../timeline-card-content/timeline-card-content';
 import TimelineItemTitle from '../timeline-item-title/timeline-card-title';
 import {
   Circle,
   CircleWrapper,
   TimelineContentContainer,
   TimelineTitleContainer,
-  Wrapper,
+  Wrapper
 } from './timeline-horizontal-card.styles';
+import { Card } from 'primereact/card';
+import { Button } from 'primereact/button';
 
 const TimelineWithCards: React.FunctionComponent<TimelineCardModel> = ({
   active,
@@ -98,6 +99,8 @@ const TimelineWithCards: React.FunctionComponent<TimelineCardModel> = ({
     [active],
   );
 
+  const makeHeader = (imgPath: string) => <img alt="Card" src={imgPath} />;
+
   const timelineContent = useMemo(() => {
     return (
     <TimelineContentContainer
@@ -109,23 +112,19 @@ const TimelineWithCards: React.FunctionComponent<TimelineCardModel> = ({
       highlight={showAllCardsHorizontal}
       tabIndex={0}
     >
-      {cards?.map((card, index) => 
-        <TimelineCardContent
-          content={card.subtitle}
-          active={active}
-          title={card.title}
-          url={card.url}
-          detailedText={card.detailedText}
-          onShowMore={handleOnShowMore}
-          theme={theme}
-          slideShowActive={slideShowRunning}
-          media={card.media}
-          onElapsed={onElapsed}
-          key={index}
-          customContent={customContent}
-          hasFocus={hasFocus}
-          onClick={onClick}
-        />
+      {cards?.map((card, index) =>
+        <>
+          <Card
+            key={index}
+            title={card.title}
+            subTitle={card.subtitle}
+            header={card.media?.source?.url ? makeHeader(card.media?.source.url) : undefined}
+            footer={card.footer}
+          >
+            {card.detailedText}
+          </Card>
+          <br />
+        </>
       )}
 
     </TimelineContentContainer>
