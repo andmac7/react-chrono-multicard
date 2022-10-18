@@ -106,7 +106,7 @@ const TimelineWithCards: React.FunctionComponent<TimelineCardModel> = ({
     <TimelineContentContainer
       className={containerClass}
       ref={contentRef}
-      id={`timeline-card-${id}`}
+      id='timeline-card'
       theme={theme}
       active={active}
       highlight={showAllCardsHorizontal}
