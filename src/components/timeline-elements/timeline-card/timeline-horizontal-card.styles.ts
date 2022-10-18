@@ -134,9 +134,9 @@ export const TimelineContentContainer = styled.div<{
 
   margin: 1rem;
 
-  &.horizontal {
+  /* &.horizontal {
     min-width: 400px;
-  }
+  } */
 
   &.vertical {
     width: calc(100% - 5em);
