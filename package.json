@@ -1,6 +1,6 @@
 {
   "name": "react-chrono-multicard",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "license": "MIT",
   "description": "A Modern Timeline component for React with multiple card entries",
   "keywords": [
